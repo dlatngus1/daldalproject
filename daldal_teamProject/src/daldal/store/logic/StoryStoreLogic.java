@@ -16,7 +16,7 @@ public class StoryStoreLogic implements StoryStore {
 
 		try {
 			StoryMapper mapper = session.getMapper(StoryMapper.class);
-			mapper.insert(story);
+			mapper.upload(story);
 			session.commit();
 		} finally {
 			session.close();
@@ -30,7 +30,7 @@ public class StoryStoreLogic implements StoryStore {
 		List<Story> list = null;
 		try {
 			StoryMapper mapper = session.getMapper(StoryMapper.class);
-			list = mapper.selectAll();	
+			list = mapper.retrieveAll(coupleId);	
 		} finally {
 			session.close();
 		}
@@ -45,7 +45,7 @@ public class StoryStoreLogic implements StoryStore {
 		
 		try {
 			StoryMapper mapper = session.getMapper(StoryMapper.class);
-			story = mapper.select(storyId);
+			story = mapper.retrieve(storyId);
 		} finally {
 			session.close();
 		}

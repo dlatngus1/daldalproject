@@ -4,12 +4,13 @@ import java.util.List;
 
 import daldal.domain.Story;
 
-
-
 public interface StoryMapper {
-    void insert(Story board);
-    Story select(int boardId);
-    void update(Story board);
-    void delete(int boardId);
-	List<Story> selectAll();
+	
+	void upload(Story story);
+	List<Story> retrieveAll(int coupleId);
+	Story retrieve(int storyId);
+	void delete(int storyId);
+	void update(Story story);
+	void deleteAll(int coupleId);
+
 }

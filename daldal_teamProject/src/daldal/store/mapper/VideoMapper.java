@@ -5,9 +5,12 @@ import java.util.List;
 import daldal.domain.Video;
 
 public interface VideoMapper {
-    void insert(Video board);
-    Video select(int boardId);
-    void update(Video board);
-    void delete(int boardId);
-	List<Video> selectAll();
+	
+	void upload(Video video);
+	List<Video> retrieveAll(int coupleId);
+	Video retrieve(int videoId);
+	void delete(int videoId);
+	void update(Video video);
+	void deleteAll(int coupleId);
+
 }
