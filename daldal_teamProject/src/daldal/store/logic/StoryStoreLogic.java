@@ -26,8 +26,15 @@ public class StoryStoreLogic implements StoryStore {
 
 	@Override
 	public List<Story> retrieveAll(int coupleId) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = DaldalSessionFactory.getInstance().getSession();
+		List<Story> list = null;
+		try {
+			StoryMapper mapper = session.getMapper(StoryMapper.class);
+			list = mapper.selectAll();	
+		} finally {
+			session.close();
+		}
+		return list;
 	}
 
 	@Override
@@ -47,19 +54,43 @@ public class StoryStoreLogic implements StoryStore {
 
 	@Override
 	public void delete(int storyId) {
-		// TODO Auto-generated method stub
+		SqlSession session = DaldalSessionFactory.getInstance().getSession();
+		
+		try {
+			StoryMapper mapper = session.getMapper(StoryMapper.class);
+			mapper.delete(storyId);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		
 	}
 
 	@Override
 	public void update(Story story) {
-		// TODO Auto-generated method stub
+		SqlSession session = DaldalSessionFactory.getInstance().getSession();
+		
+		try {
+			StoryMapper mapper = session.getMapper(StoryMapper.class);
+			mapper.update(story);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		
 	}
 
 	@Override
 	public void deleteAll(int coupleId) {
-		// TODO Auto-generated method stub
+		SqlSession session = DaldalSessionFactory.getInstance().getSession();
+		
+		try {
+			StoryMapper mapper = session.getMapper(StoryMapper.class);
+			mapper.delete(coupleId);
+			session.commit();
+		} finally {
+			session.close();
+		}
 		
 	}
 
